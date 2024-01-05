@@ -1,0 +1,275 @@
+                      2-D Array
+
+ 1) Sum of all Elements in a 2-D Array
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int [][]a ={{1,2,3}, {4,5,6}, {7,8,9}};
+        int sum = 0;
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                sum = sum + a[i][j];
+            }
+        }
+        System.out.println(sum);
+    }
+}
+---------------------------------------------------------
+ user input
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int [][]a =new int[3][3];
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                System.out.println("Enter element in " + i + "," + j + " th position:");
+                a[i][j] = sc.nextInt();
+            }
+        }
+        int sum = 0;
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                sum = sum + a[i][j];
+            }
+        }
+        System.out.print("Sum of this 2-D Array is: ");
+        System.out.println(sum);
+    }
+}
+===========================================================================================================
+ 2) Largest Element in 2-D Array
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int [][]a ={{12,45,67}, {23,9,13}, {56,34,21}};
+        int max = a[0][0];
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                if (a[i][j] > max){
+                    max = a[i][j];
+                }
+            }
+        }
+        System.out.println(max);
+    }
+}
+---------------------------------------------------------
+ User Input
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int [][]a =new int[3][3];
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                System.out.println("Enter element in " + i + "," + j + " th position:");
+                a[i][j] = sc.nextInt();
+            }
+        }
+        int max = a[0][0];
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                if (a[i][j] > max){
+                    max = a[i][j];
+                }
+            }
+        }
+        System.out.print("Max element in this 2-D Array is: ");
+        System.out.println(max);
+    }
+}
+===========================================================================================================
+ 3) Transpose of a Matrix
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[][]a = {{1,2,3},{4,5,6},{7,8,9}};
+        int[][]transpose = new int[3][3];
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                transpose[i][j] = a[j][i];
+                System.out.print(transpose[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+=========================================================================================================
+ 4) Sum of each row of 2-D Array
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        int[][]a = {{1,2,3},{4,5,6},{7,8,9}};
+        for (int i = 0; i < a.length; i++){
+            int sum = 0;
+            for (int j = 0; j < a[i].length; j++){
+                sum = sum + a[i][j];
+            }
+            System.out.println("Sum of " + i + " row is: " + sum);
+        }
+    }
+}
+=========================================================================================================
+ 5) Sum of each column of 2-D Array
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        int[][]a = {{1,2,3},{4,5,6},{7,8,9}};
+        for (int i = 0; i < a.length; i++){
+            int sum = 0;
+            for (int j = 0; j < a[i].length; j++){
+                sum = sum + a[j][i];
+            }
+            System.out.println("Sum of " + i + " column is: " + sum);
+        }
+    }
+}
+========================================================================================================
+ 6) 90 degree rotation of Matrix
+          1, 2, 3          7, 4, 1
+          4, 5, 6    -->   8, 5, 2
+          7, 8, 9          9, 6, 3
+
+public class Main {
+    static void printArray(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+    }
+
+    static void transpose(int[][] arr, int r, int c) {
+        for (int i = 0; i < c; i++) {
+            for (int j = i; j < r; j++) {
+                int temp = arr[i][j];
+                arr[i][j] = arr[j][i];
+                arr[j][i] = temp;
+            }
+        }
+    }
+
+    static void reverse(int arr[]) {
+        int i = 0, j = arr.length - 1;
+        while (i < j) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+
+    }
+
+    static void rotate(int[][] arr, int n)
+    {
+        transpose(arr, n, n);
+        for (int i = 0; i < n; i++) {
+            reverse(arr[i]);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        int r = 3, c = 3;
+        int[][] arr = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
+        System.out.println("Original array ");
+        printArray(arr);
+        System.out.println("Rotate array");
+        rotate(arr, r);
+        printArray(arr);
+    }
+}
+=========================================================================================================
+ 7) Largest row Sum in 2-D Array
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        int[][]a = {{1,2,3},{4,5,6},{7,8,9}};
+        int max = 0;
+        int row = 0;
+        for (int i = 0; i < a.length; i++){
+            int sum = 0;
+            for (int j = 0; j < a[i].length; j++){
+                sum = sum + a[i][j];
+                if (sum > max){
+                    max = sum;
+                    row = j+1;
+                }
+            }
+        }
+        System.out.println("Max value is of " + row + " row i.e: " + max);
+    }
+}
+=========================================================================================================
+ Smallest row sum in 2-D Array
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        int[][]a = {{4,5,6},{7,8,9},{1,2,3}};
+        int min = 999;
+        int row = 0;
+        for (int i = 0; i < a.length; i++){
+            int sum = 0;
+            for (int j = 0; j < a[i].length; j++){
+                sum = sum + a[i][j];
+                }
+            if (sum < min){
+                min = sum;
+                row = i+1;
+            }
+        }
+        System.out.println("Min value is of " + row + " row i.e: " + min);
+    }
+}
+=========================================================================================================
+ 8) Smallest element in 2-D Array
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        int[][]a = {{1,2,3},{4,5,6},{8,9,0}};
+        int min = a[0][0];
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i]. length; j++){
+                if (a[i][j] < min){
+                    min = a[i][j];
+                }
+            }
+        }
+        System.out.println("Smallest element in this 2-D Array is: " + min);
+    }
+}
+=========================================================================================================
+ 9) Frequency of a number in a 2-D Array
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[][]a = {{1,2,3},{4,2,1},{7,2,1}};
+        System.out.print("Enter number you want to check Frequency of: ");
+        int target = sc.nextInt();
+        int count = 0;
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                if (a[i][j] == target){
+                    count++;
+                }
+            }
+        }
+        System.out.println("Frequency of " + target + " is: " + count);
+    }
+}
+=========================================================================================================
+
+
